@@ -148,7 +148,7 @@ class SplitterLayout extends React.Component {
       const containerRect = this.container.getBoundingClientRect();
       const splitterRect = this.splitter.getBoundingClientRect();
       const secondaryPaneSize = this.getSecondaryPaneSize(containerRect, splitterRect, {
-        left: e.clientX,
+        left: e.clientX + this.props.offsetLeft,
         top: e.clientY
       }, true);
       clearSelection();
@@ -232,7 +232,8 @@ SplitterLayout.propTypes = {
   onDragStart: PropTypes.func,
   onDragEnd: PropTypes.func,
   onSecondaryPaneSizeChange: PropTypes.func,
-  children: PropTypes.arrayOf(PropTypes.node)
+  children: PropTypes.arrayOf(PropTypes.node),
+  offsetLeft: PropTypes.number
 };
 
 SplitterLayout.defaultProps = {
@@ -246,6 +247,7 @@ SplitterLayout.defaultProps = {
   onDragStart: null,
   onDragEnd: null,
   onSecondaryPaneSizeChange: null,
+  offsetLeft: 0,
   children: []
 };
 
